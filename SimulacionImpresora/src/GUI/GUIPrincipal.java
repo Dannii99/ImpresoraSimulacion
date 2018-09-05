@@ -5,6 +5,9 @@
  */
 package GUI;
 
+import Metodos.Cargardatos;
+import javax.swing.Timer;
+
 /**
  *
  * @author Armando
@@ -15,7 +18,10 @@ public class GUIPrincipal extends javax.swing.JFrame {
      * Creates new form GUIPrincipal
      */
     public GUIPrincipal() {
+         super();
         initComponents();
+        setResizable(false);
+        
     }
 
     /**
@@ -29,6 +35,12 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbtArchivos = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        btnCargardatos = new javax.swing.JButton();
+        btnInicialsimulacion = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,7 +50,42 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Simulacion de una cola de Impresion");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 14, 580, 40));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 14, 600, 40));
+
+        tbtArchivos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "                  Archivos"
+            }
+        ));
+        jScrollPane1.setViewportView(tbtArchivos);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 160, 140));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Printer_Folder_36848.png"))); // NOI18N
+        jLabel2.setToolTipText("");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
+
+        btnCargardatos.setText("Cargar Datos");
+        btnCargardatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargardatosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCargardatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, 40));
+
+        btnInicialsimulacion.setText("Iniciar Simulacion");
+        jPanel1.add(btnInicialsimulacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, 40));
+
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 70, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -48,11 +95,23 @@ public class GUIPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCargardatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargardatosActionPerformed
+        // TODO add your handling code here:
+          btnInicialsimulacion.setEnabled(true);
+        Cargardatos.CargardatosEnJtable(tbtArchivos);
+       
+    }//GEN-LAST:event_btnCargardatosActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -90,7 +149,13 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCargardatos;
+    private javax.swing.JButton btnInicialsimulacion;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tbtArchivos;
     // End of variables declaration//GEN-END:variables
 }
