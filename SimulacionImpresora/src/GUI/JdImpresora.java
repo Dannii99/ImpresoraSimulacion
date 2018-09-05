@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import javax.swing.JDialog;
+
 /**
  *
  * @author Armando
@@ -14,14 +16,18 @@ public class JdImpresora extends javax.swing.JDialog {
     /**
      * Creates new form JdImpresora
      */
+  public static GUIPrincipal frmPrincipal;
     protected String cadena = "";
     
-    public JdImpresora(java.awt.Frame parent, boolean modal,String Elemento) {
+    public JdImpresora(GUIPrincipal parent, boolean modal, String Elemento) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(this);
         this.setVisible(true);
        jLabelMostrar.setText(Elemento);
+        this.setModal(modal);
+        this.frmPrincipal = parent;
+     
         
     }
     
@@ -55,6 +61,9 @@ public class JdImpresora extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelMostrar.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
+        jLabelMostrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(jLabelMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 250, 40));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
@@ -109,18 +118,18 @@ public class JdImpresora extends javax.swing.JDialog {
         //</editor-fold>
 
         /* Create and display the dialog */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                JdImpresora dialog = new JdImpresora(new javax.swing.JFrame(), true);
-//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-//                    @Override
-//                    public void windowClosing(java.awt.event.WindowEvent e) {
-//                        System.exit(0);
-//                    }
-//                });
-//                dialog.setVisible(true);
-//            }
-//        });
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                JdImpresora dialog = new JdImpresora(frmPrincipal, true, null);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,6 +5,7 @@
  */
 package GUI;
 
+
 import Metodos.Cargardatos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,8 +26,9 @@ public class GUIPrincipal extends javax.swing.JFrame {
     public GUIPrincipal() {
         super();
         initComponents();
-        timerA = new Timer(5000, Tinicio);
-        timerB = new Timer(2000, Tfinal);
+        timerA = new Timer(7000, Tinicio);
+        timerB = new Timer(10000, Tfinal);
+       
         setResizable(false);
         Cargardatos.ButtonBloqueo(btnInicialsimulacion);
 
@@ -52,6 +54,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
                 timerB.start();
             }
             timerA.stop();
+             
         }
 
     };
@@ -69,6 +72,9 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
     };
 
+    
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -162,9 +168,11 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
     private void btnInicialsimulacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicialsimulacionActionPerformed
         // TODO add your handling code here:
-         JventanaImprimiendo = new JdImpresora(new javax.swing.JFrame(), false, Cargardatos.FirstElement());
+         JventanaImprimiendo = new JdImpresora(new GUIPrincipal(), false, Cargardatos.FirstElement());
          Cargardatos.ButtonBloqueo(btnInicialsimulacion);
         timerA.start();
+         
+        
     }//GEN-LAST:event_btnInicialsimulacionActionPerformed
 
     /**
@@ -212,4 +220,6 @@ public class GUIPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbtArchivos;
     // End of variables declaration//GEN-END:variables
+
+    
 }
